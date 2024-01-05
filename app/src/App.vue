@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const isDrawerOpen : Ref<boolean> = ref(false) 
+const isDrawerOpen: Ref<boolean> = ref(false) 
 </script>
-
 
 <template>
   <VApp>
@@ -12,7 +11,19 @@ const isDrawerOpen : Ref<boolean> = ref(false)
       <VAppBarTitle> Assignment Home </VAppBarTitle>
     </VAppBar>
     <VNavigationDrawer v-model="isDrawerOpen" left app>
-      <VListItem title="My Assignment" subtitle="Done using Vue & Vuetify 3"></VListItem>
+      <VListItem>
+        <VListItemTitle> My Assignment </VListItemTitle>
+        <VListItemSubtitle> Done using Vue & Vuetify 3 </VListItemSubtitle>
+      </VListItem>
+      <VDivider></VDivider>
+      <VListItem to="/" exact>
+        <VListItemTitle>
+          <VIcon>
+            mdi-view-dashboard
+          </VIcon>
+          Stories
+        </VListItemTitle>
+      </VListItem>
     </VNavigationDrawer>
     <v-main>
       <router-view />
