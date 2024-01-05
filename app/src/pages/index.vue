@@ -10,5 +10,6 @@ const storiesStore = useStoriesStore();
 
 onMounted( async () => {
   await storiesStore.getStories();
+  console.log(storiesStore.stories);
 })
 </script>
