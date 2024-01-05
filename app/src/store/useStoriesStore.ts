@@ -10,12 +10,28 @@ export const useStoriesStore = defineStore("stories", {
     async getStories() {
       const axios = useAxios();
 
-      const res = await axios.get('/');
+      const res = await axios.get<IStories>('/');
 
       console.log(res)
     },
   },
 });
+
+interface IStories {
+  current_page: Number,
+  data: Array<Object>
+  first_page_url: String,
+  from: Number,
+  last_page: Number,
+  last_page_url: String,
+  links: Array<Object>
+  next_page_url: String,
+  path: String,
+  prev_page: Number,
+  prev_page_url?: String,
+  to: Number,
+  total: Number
+}
 
 interface IStory {
   title: String;
