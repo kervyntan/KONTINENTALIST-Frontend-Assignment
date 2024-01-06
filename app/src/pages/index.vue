@@ -1,10 +1,6 @@
 <template>
-  <VInfiniteScroll :height="300" mode="manual" :items="storiesStore.stories" :onLoad="storiesStore.getMoreStories">
-    <template v-for="(item, index) in storiesStore.stories" :key="item">
-      <div :class="['pa-2', index % 2 === 0 ? 'bg-grey-lighten-2' : '']">
-        Item #{{ item }}
-      </div>
-    </template>
+  <VInfiniteScroll :height="600" mode="manual" :items="storiesStore.stories" :onLoad="storiesStore.getMoreStories">
+    <TaskCard v-for="(item, index) in storiesStore.stories" :key="index" :data="item" :index="index + 1"/>
   </VInfiniteScroll>
 </template>
 

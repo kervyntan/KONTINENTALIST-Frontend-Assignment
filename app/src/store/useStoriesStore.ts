@@ -47,29 +47,29 @@ export const useStoriesStore = defineStore("stories", {
 interface IStories {
   current_page: number;
   data: Array<IStoryData>;
-  first_page_url: String;
+  first_page_url: string;
   from: number;
   last_page: number;
-  last_page_url: String;
+  last_page_url: string;
   links: Array<IStoryData>;
-  next_page_url: String;
-  path: String;
+  next_page_url: string;
+  path: string;
   prev_page: number;
-  prev_page_url?: String;
+  prev_page_url?: string;
   to: number;
   total: number;
 }
 
 interface IStoryData {
-  title: String;
-  dek: String;
+  title: string;
+  dek: string;
   hero_image: {
-    url: String;
+    url: string;
   };
 }
 
-interface IStory {
-  title: String;
-  dek: String;
-  hero_image_url: String;
+export interface IStory {
+  title: string;
+  dek: string;
+  hero_image_url: string;
 }
