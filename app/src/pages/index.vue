@@ -1,8 +1,9 @@
 <template>
-
+<TaskCard/>
 </template>
 
 <script lang="ts" setup>
+import TaskCard from '../components/taskCard.vue';
 import { useStoriesStore } from '@/store/useStoriesStore';
 import { onMounted } from 'vue';
 
