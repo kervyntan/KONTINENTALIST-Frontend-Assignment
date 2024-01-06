@@ -5,7 +5,7 @@ import { useAxios } from "../plugins/axiosConfig";
 export const useStoriesStore = defineStore("stories", {
   state: () => ({
     stories: [] as Array<IStory>,
-    pageNumber: 1 as Number
+    pageNumber: 1 as Number,
   }),
   actions: {
     async getStories() {
@@ -23,9 +23,7 @@ export const useStoriesStore = defineStore("stories", {
         this.stories.push(dataToAdd);
       });
     },
-    async getMoreStories() {
-
-    }
+    async getMoreStories() {},
   },
 });
 
