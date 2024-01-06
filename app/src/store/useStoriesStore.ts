@@ -5,7 +5,7 @@ import { useAxios } from "../plugins/axiosConfig";
 export const useStoriesStore = defineStore("stories", {
   state: () => ({
     stories: [] as Array<IStory>,
-    pageNumber: 1 as Number,
+    pageNumber: 1 as number,
   }),
   actions: {
     async getStories() {
@@ -23,24 +23,41 @@ export const useStoriesStore = defineStore("stories", {
         this.stories.push(dataToAdd);
       });
     },
-    async getMoreStories() {},
+    async getMoreStories({ done }) {
+      const axios = useAxios();
+
+      const response = await axios.get<IStories>(`/?page=${this.pageNumber}`);
+
+      response.data.data.forEach((story) => {
+        const { title, dek, hero_image } = story;
+        const dataToAdd = {
+          title,
+          dek,
+          hero_image_url: hero_image.url,
+        };
+        this.stories.push(dataToAdd);
+      });
+
+      this.pageNumber = this.pageNumber + 1;
+      done('ok')
+    },
   },
 });
 
 interface IStories {
-  current_page: Number;
+  current_page: number;
   data: Array<IStoryData>;
   first_page_url: String;
-  from: Number;
-  last_page: Number;
+  from: number;
+  last_page: number;
   last_page_url: String;
   links: Array<IStoryData>;
   next_page_url: String;
   path: String;
-  prev_page: Number;
+  prev_page: number;
   prev_page_url?: String;
-  to: Number;
-  total: Number;
+  to: number;
+  total: number;
 }
 
 interface IStoryData {

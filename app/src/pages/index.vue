@@ -1,5 +1,5 @@
 <template>
-  <VInfiniteScroll :height="300" :items="storiesStore.stories" :onLoad="storiesStore.getStories">
+  <VInfiniteScroll :height="300" mode="manual" :items="storiesStore.stories" :onLoad="storiesStore.getMoreStories">
     <template v-for="(item, index) in storiesStore.stories" :key="item">
       <div :class="['pa-2', index % 2 === 0 ? 'bg-grey-lighten-2' : '']">
         Item #{{ item }}
