@@ -28,15 +28,15 @@ const htmlToText = (htmlText: string | undefined) => {
     <VContainer>
         <VCard>
             <VCardItem>
-                <VCardTitle>
+                <VCardTitle style="white-space: normal;">
                     {{ props.index }}.
                     {{ props.data!.title }}
                 </VCardTitle>
-                <VCardSubtitle> {{ htmlToText(props.data!.dek) }} </VCardSubtitle>
+                <VCardText> {{ htmlToText(props.data!.dek) }} </VCardText>
             </VCardItem>
 
             <VCardItem>
-                <VImg :src="props.data!.hero_image_url" alt="Story hero image" />
+                <VImg :src="props.data!.hero_image_url" :width="500" alt="Story hero image" />
             </VCardItem>
         </VCard>
     </VContainer>

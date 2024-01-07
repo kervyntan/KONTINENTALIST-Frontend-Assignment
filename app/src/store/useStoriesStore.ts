@@ -2,6 +2,8 @@
 import { defineStore } from "pinia";
 import { useAxios } from "../plugins/axiosConfig";
 
+const axios = useAxios();
+
 export const useStoriesStore = defineStore("stories", {
   state: () => ({
     stories: [] as Array<IStory>,
@@ -9,8 +11,6 @@ export const useStoriesStore = defineStore("stories", {
   }),
   actions: {
     async getStories() {
-      const axios = useAxios();
-
       const response = await axios.get<IStories>("/");
 
       response.data.data.forEach((story) => {
@@ -24,8 +24,6 @@ export const useStoriesStore = defineStore("stories", {
       });
     },
     async getMoreStories({ done }) {
-      const axios = useAxios();
-
       const response = await axios.get<IStories>(`/?page=${this.pageNumber}`);
 
       response.data.data.forEach((story) => {
