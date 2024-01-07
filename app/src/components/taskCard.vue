@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// Need to do processing on dek to show it as string
 import { IStory } from "../store/useStoriesStore";
 const props = defineProps({
     data: {
@@ -8,6 +7,7 @@ const props = defineProps({
     index: Number
 })
 
+// Processing "dek" value from HTML string source code to string
 const htmlToText = (htmlText: string | undefined) => {
 
     if (htmlText == undefined) {

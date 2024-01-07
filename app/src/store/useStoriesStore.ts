@@ -14,6 +14,7 @@ export const useStoriesStore = defineStore("stories", {
       const response = await axios.get<IStories>("/");
 
       response.data.data.forEach((story) => {
+        // Destructuring required fields
         const { title, dek, hero_image } = story;
         const dataToAdd = {
           title,
@@ -23,7 +24,9 @@ export const useStoriesStore = defineStore("stories", {
         this.stories.push(dataToAdd);
       });
     },
+    
     async getMoreStories({ done }) {
+      // Store response from API
       const response = await axios.get<IStories>(`/?page=${this.pageNumber}`);
 
       response.data.data.forEach((story) => {
@@ -58,6 +61,7 @@ interface IStories {
   total: number;
 }
 
+// Create this interface for Intellisense
 interface IStoryData {
   title: string;
   dek: string;
